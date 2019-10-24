@@ -1,12 +1,8 @@
 <template>
-  <div>
-    <el-container>
-      <el-header><Top></Top></el-header>
-      <el-container>
-        <el-aside width="200px"><Aside></Aside></el-aside>
-        <el-main><router-view></router-view></el-main>
-      </el-container>
-    </el-container>
+  <div id="all">
+    <Top class="top"></Top>
+    <Aside class="aside"></Aside>
+    <router-view class="main"></router-view>
   </div>
 </template>
 
@@ -33,4 +29,22 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+#all{
+  position: relative;
+  display: flex;
+  .top{
+    position: fixed;
+  }
+  .aside{
+    margin-top: 60px;
+    width: 12.5%;
+  }
+  .main{
+    margin-top: 60px;
+    width: 87.5%;
+    margin-left: 12.5%;
+    background-color: grey;
+  }
+}
+</style>

@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: "/homepag"
+    redirect: "/homepage"
   },
   {
     path: "/home",
@@ -117,7 +117,7 @@ const routes = [
       }
     ]
   },
-  // 上传页配为结构的子路由
+  // 退出页配为结构的子路由
   {
     path: "/quit",
     component: Comment,
