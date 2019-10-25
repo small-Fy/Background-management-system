@@ -1,7 +1,5 @@
 <template>
-  <div>
-    Label
-  </div>
+  <div>aaa</div>
 </template>
 
 <script>
@@ -10,10 +8,13 @@ export default {
   components: {},
   props: {},
   data() {
-    return {};
+    return {
+    };
   },
-  methods: {},
-  mounted() {},
+  methods: {
+  },
+  mounted() {
+  },
   created() {},
   filters: {},
   computed: {},

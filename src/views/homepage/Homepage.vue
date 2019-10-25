@@ -9,6 +9,8 @@
     </div>
     <div class="bottom">
       <Order></Order>
+      <!--      <Todo></Todo>-->
+      <Todo></Todo>
       <Census></Census>
     </div>
   </div>
@@ -22,6 +24,8 @@ import Pie from "../../components/pie/Pie";
 import Histogram from "../../components/histogram/Histogram";
 import Order from "../../components/order/Order";
 import Census from "../../components/census/Census";
+import Todo from "../../components/todo/Todo";
+
 export default {
   name: "homepage",
   components: {
@@ -31,16 +35,15 @@ export default {
     Pie,
     Histogram,
     Order,
-    Census
+    Census,
+    Todo
   },
   props: {},
   data() {
     return {};
   },
   methods: {},
-  mounted() {
-
-  },
+  mounted() {},
   created() {},
   filters: {},
   computed: {},
@@ -52,12 +55,12 @@ export default {
 <style scoped lang="scss">
 #homepage {
   padding: 0 20px;
-  .chart{
+  .chart {
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
   }
-  .bottom{
+  .bottom {
     display: flex;
     margin-top: 50px;
   }

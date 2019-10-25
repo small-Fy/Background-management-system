@@ -1,9 +1,9 @@
 <template>
   <div id="order">
     <el-table :data="data" style="width: 100%">
-      <el-table-column prop="num" label="Order-No" width="380">
+      <el-table-column prop="num" label="Order-No" width="280">
       </el-table-column>
-      <el-table-column prop="price" label="Price" width="280">
+      <el-table-column prop="price" label="Price" width="180">
       </el-table-column>
       <el-table-column prop="status" label="status" width="100">
         <template slot-scope="scope">
@@ -52,7 +52,7 @@ export default {
 
 <style scoped lang="scss">
 #order {
-  width: 66%;
+  width: 50%;
   border-radius: 5px;
 }
 </style>

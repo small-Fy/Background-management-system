@@ -30,21 +30,21 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#all{
+#all {
   position: relative;
   display: flex;
-  .top{
+  .top {
     position: fixed;
   }
-  .aside{
+  .aside {
     margin-top: 60px;
     width: 12.5%;
   }
-  .main{
+  .main {
     margin-top: 60px;
     width: 87.5%;
     margin-left: 12.5%;
-    background-color: grey;
+    background-color: #f0f2f5;
   }
 }
 </style>
