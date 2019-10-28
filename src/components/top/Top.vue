@@ -2,15 +2,19 @@
   <div id="top">
     <div class="left">
       <span>欢迎</span>
-      <span>Lp</span>
+      <span>{{name}}</span>
       <span>来到小爱后台管理系统</span>
     </div>
     <div class="right">
-      <span>早上好</span>
+      <span v-if="time>6 && time<=7">早上好</span>
+      <span v-if="time>12 && time<=14">中午好</span>
+      <span v-if="time>14 && time<=18">下午好</span>
+      <span v-if="time>18 && time<=24">晚上好</span>
+      <span v-if="time>24 && time<=6">该睡觉了</span>
       <span>亲爱的</span>
-      <span>lp</span>
+      <span>{{name}}</span>
       <span>上次登录时间</span>
-      <span>上次登录时间</span>
+      <span>{{date}}</span>
     </div>
   </div>
 </template>
@@ -21,13 +25,30 @@ export default {
   components: {},
   props: {},
   data() {
-    return {};
+    return {
+      time:""
+    };
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    nowTime(){
+      let nowTime=Date.now()
+      this.time=this.$dayjs(nowTime).format('HH')
+      console.log(this.time);
+    }
+  },
+  mounted() {
+    this.nowTime();
+  },
   created() {},
   filters: {},
-  computed: {},
+  computed: {
+    name(){
+      return this.$store.state.username
+    },
+    date(){
+      return this.$store.state.date
+    }
+  },
   watch: {},
   directives: {}
 };

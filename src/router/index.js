@@ -11,6 +11,16 @@ const routes = [
     redirect: "/homepage"
   },
   {
+    path: "/register",
+    name: "register",
+    component: () => import("../views/register/Register")
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("../views/login/Login")
+  },
+  {
     path: "/home",
     component: Comment,
     children: [
@@ -66,6 +76,28 @@ const routes = [
         path: "",
         name: "published",
         component: () => import("../views/published/Published")
+      }
+    ]
+  },
+  {
+    path: "/edit",
+    component: Comment,
+    children: [
+      {
+        path: "",
+        name: "edit",
+        component: () => import("../views/edit/Edit")
+      }
+    ]
+  },
+  {
+    path: "/look",
+    component: Comment,
+    children: [
+      {
+        path: "",
+        name: "look",
+        component: () => import("../views/look/Look")
       }
     ]
   },
@@ -141,5 +173,19 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+
+//路由守卫
+// router.beforeEach((to, from, next) => {
+//   if (to.name === "login" || to.name === "register") {
+//     next();
+//   } else {
+//     if (localStorage.getItem("name")) {
+//       next();
+//     } else {
+//       next("/login");
+//     }
+//   }
+// });
 
 export default router;

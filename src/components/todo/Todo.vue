@@ -99,7 +99,7 @@ export default {
   methods: {
     getData() {
       this.$axios
-        .req("api//todoList")
+        .req("api/todoList")
         .then(res => {
           this.list = res.data;
           console.log(res);

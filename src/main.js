@@ -9,6 +9,10 @@ import "element-ui/lib/theme-chalk/index.css";
 import dayjs from "dayjs";
 import lodash from "lodash";
 
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+
+Vue.use(mavonEditor)
 Vue.use(ElementUI);
 Vue.prototype.$dayjs = dayjs;
 Vue.prototype.$lodash = lodash;
@@ -32,3 +36,6 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+
+
+
