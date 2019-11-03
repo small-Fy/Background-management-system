@@ -1,7 +1,7 @@
 <template>
   <div id="look">
     <div class="top">
-      <el-button type="primary">返回</el-button>
+      <el-button type="primary" @click="back">返回</el-button>
     </div>
     <div class="word">
       <div class="title">{{ ruleForm.title }}</div>
@@ -9,7 +9,7 @@
       <div class="date">发布于：{{ date }}</div>
     </div>
     <div class="inner">
-
+      <mavon-editor v-model="ruleForm.text" :editable="false" :toolbarsFlag="false" :subfield="false" defaultOpen="preview"/>
     </div>
   </div>
 </template>
@@ -40,6 +40,9 @@ export default {
     },
     format() {
       this.date = this.$dayjs(this.ruleForm.date).format("YYYY-MM-DD HH:mm:ss");
+    },
+    back(){
+      this.$router.push("/published")
     }
   },
   mounted() {

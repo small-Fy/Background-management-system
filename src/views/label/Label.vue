@@ -1,17 +1,13 @@
 <template>
   <div id="label">
     <div class="top">
-      <span class="wd" @click="changewd" :class="{ bg: index === 1 }"
-        >未读消息({{ data.length }})</span
-      >
-      <span class="yd" @click="changeyd" :class="{ bg: index === 2 }"
-        >已读消息({{ dataYd.length }})</span
-      >
-      <span class="hs" @click="changehs" :class="{ bg: index === 3 }"
-        >回收站({{ dataHs.length }})</span
-      >
+      <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane :label="unread" name="first"></el-tab-pane>
+        <el-tab-pane :label="read" name="second"></el-tab-pane>
+        <el-tab-pane :label="recycle" name="third"></el-tab-pane>
+      </el-tabs>
     </div>
-    <div v-if="index === 1" class="inner1">
+    <div v-if="activeName === 'first'" class="inner1">
       <div v-for="(item, index) in data" :key="index" class="row">
         <div class="text">{{ item.text }}</div>
         <div class="right">
@@ -23,7 +19,7 @@
         <div class="button" @click="bwydAll">全部标为已读</div>
       </div>
     </div>
-    <div v-if="index === 2" class="inner2">
+    <div v-if="activeName === 'second'" class="inner2">
       <div v-for="(item, index) in dataYd" :key="index" class="row">
         <div class="text">{{ item.text }}</div>
         <div class="right">
@@ -35,7 +31,7 @@
         <div class="button" @click="scAll">删除全部</div>
       </div>
     </div>
-    <div v-if="index === 3" class="inner3">
+    <div v-if="activeName === 'third'" class="inner3">
       <div v-for="(item, index) in dataHs" :key="index" class="row">
         <div class="text">{{ item.text }}</div>
         <div class="right">
@@ -57,7 +53,7 @@ export default {
   props: {},
   data() {
     return {
-      index: 1,
+      activeName: 'first',
       data: [
         {
           text: "【系统通知】该系统将于今晚凌晨2点到5点进行升级维护",
@@ -70,14 +66,8 @@ export default {
     };
   },
   methods: {
-    changewd() {
-      this.index = 1;
-    },
-    changeyd() {
-      this.index = 2;
-    },
-    changehs() {
-      this.index = 3;
+    handleClick() {
+
     },
     bwyd(index) {
       this.dataYd.push(this.data[index]);
@@ -106,7 +96,17 @@ export default {
   mounted() {},
   created() {},
   filters: {},
-  computed: {},
+  computed: {
+    unread(){
+      return `未读消息(${this.data.length})`
+    },
+    read(){
+      return `已读消息(${this.dataYd.length})`
+    },
+    recycle(){
+      return `回收站(${this.dataHs.length})`
+    }
+  },
   watch: {},
   directives: {}
 };

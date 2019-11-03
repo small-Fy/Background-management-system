@@ -8,10 +8,12 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import dayjs from "dayjs";
 import lodash from "lodash";
+import JsonExcel from 'vue-json-excel'
 
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 
+Vue.component('downloadExcel', JsonExcel)
 Vue.use(mavonEditor)
 Vue.use(ElementUI);
 Vue.prototype.$dayjs = dayjs;

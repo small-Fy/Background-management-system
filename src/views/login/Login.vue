@@ -121,8 +121,16 @@ export default {
                     name: this.ruleForm.username
                   })
                 );
+                localStorage.setItem(
+                  "date",
+                  JSON.stringify({
+                    time: res.data[0].date
+                  })
+                );
                 this.$store.state.username = this.ruleForm.username;
-                this.$store.state.date=this.$dayjs(res.data[0].date).format('YYYY年MM月DD日HH:mm:ss').valueOf();
+                this.$store.state.date = this.$dayjs(res.data[0].date)
+                  .format("YYYY年MM月DD日HH:mm:ss")
+                  .valueOf();
                 this.$router.push("/homepage");
                 console.log(this.$store.state.date);
               } else {
@@ -164,7 +172,7 @@ export default {
 
 <style scoped lang="scss">
 #login {
-    border-radius: 100px;
+  border-radius: 100px;
   background-color: #f0f2f5;
   padding-top: 200px;
   position: relative;
@@ -187,22 +195,22 @@ export default {
     }
     .bottom {
       margin-top: 30px;
-        padding-bottom: 30px;
+      padding-bottom: 30px;
       .form {
         width: 550px;
-          margin-left: 20px;
+        margin-left: 20px;
         .code {
           display: flex;
         }
-          .el-button{
-              margin-top: 20px;
-              margin-right: 100px;
-          }
+        .el-button {
+          margin-top: 20px;
+          margin-right: 100px;
+        }
       }
     }
   }
 }
-.el-input{
-    width: 80%;
+.el-input {
+  width: 80%;
 }
 </style>

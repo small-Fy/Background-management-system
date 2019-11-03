@@ -2,19 +2,19 @@
   <div id="top">
     <div class="left">
       <span>欢迎</span>
-      <span>{{name}}</span>
+      <span>{{ name }}</span>
       <span>来到小爱后台管理系统</span>
     </div>
     <div class="right">
-      <span v-if="time>6 && time<=7">早上好</span>
-      <span v-if="time>12 && time<=14">中午好</span>
-      <span v-if="time>14 && time<=18">下午好</span>
-      <span v-if="time>18 && time<=24">晚上好</span>
-      <span v-if="time>24 && time<=6">该睡觉了</span>
+      <span v-if="time > 6 && time <= 7">早上好</span>
+      <span v-if="time > 12 && time <= 14">中午好</span>
+      <span v-if="time > 14 && time <= 18">下午好</span>
+      <span v-if="time > 18 && time <= 24">晚上好</span>
+      <span v-if="time > 24 && time <= 6">该睡觉了</span>
       <span>亲爱的</span>
-      <span>{{name}}</span>
+      <span>{{ name }}</span>
       <span>上次登录时间</span>
-      <span>{{date}}</span>
+      <span>{{ time }}</span>
     </div>
   </div>
 </template>
@@ -26,28 +26,27 @@ export default {
   props: {},
   data() {
     return {
-      time:""
+      name: "",
+      time: ""
     };
   },
   methods: {
-    nowTime(){
-      let nowTime=Date.now()
-      this.time=this.$dayjs(nowTime).format('HH')
-      console.log(this.time);
+    nowTime() {
+      this.name = JSON.parse(localStorage.getItem("user")).name;
+    },
+    nowName() {
+      this.time = this.$dayjs(
+        JSON.parse(localStorage.getItem("date")).time
+      ).format("YYYY年MM月DD日HH:mm:ss");
     }
   },
   mounted() {
     this.nowTime();
+    this.nowName();
   },
   created() {},
   filters: {},
   computed: {
-    name(){
-      return this.$store.state.username
-    },
-    date(){
-      return this.$store.state.date
-    }
   },
   watch: {},
   directives: {}
@@ -55,7 +54,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#top{
+#top {
   display: flex;
   background-color: #2e5e85;
   justify-content: space-between;

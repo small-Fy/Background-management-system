@@ -40,7 +40,7 @@
             <td class="third">{{ item.ORI_PRICE }}</td>
             <td class="four">{{ item.PRESENT_PRICE }}</td>
             <td class="five">
-              <span class="alter"><i class="el-icon-edit"></i>修改</span>
+              <span class="alter" @click="revise(item)"><i class="el-icon-edit"></i>修改</span>
               <span class="del" @click="del(index)"
                 ><i class="el-icon-delete"></i>删除</span
               >
@@ -51,6 +51,24 @@
       <div v-else>暂无数据</div>
     </div>
     <Turnpage @pages="pages" @pagesNum="pagesNum" :arr="arr"></Turnpage>
+
+    <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+      <el-form :model="obj">
+        <el-form-item label="名称" :label-width="formLabelWidth">
+          <el-input v-model="obj.NAME" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="原价" :label-width="formLabelWidth">
+          <el-input v-model="obj.ORI_PRICE" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="现价" :label-width="formLabelWidth">
+          <el-input v-model="obj.PRESENT_PRICE" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -68,7 +86,10 @@ export default {
       arr: [],
       data: [],
       pagess: "",
-      pagesNumm: ""
+      pagesNumm: "",
+      dialogFormVisible: false,
+      formLabelWidth: '120px',
+      obj:{}
     };
   },
   methods: {
@@ -92,6 +113,10 @@ export default {
     },
     del(index) {
       this.arr.splice(index, 1);
+    },
+    revise(item){
+      this.obj=item
+      this.dialogFormVisible=true
     }
   },
   mounted() {

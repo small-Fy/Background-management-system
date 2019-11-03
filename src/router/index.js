@@ -175,7 +175,7 @@ const router = new VueRouter({
 });
 
 
-//路由守卫
+// 路由守卫
 // router.beforeEach((to, from, next) => {
 //   if (to.name === "login" || to.name === "register") {
 //     next();
